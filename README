@@ -1,0 +1,7 @@
+README
+
+Shell is a program that is compiled by the given makefile. Once compiled it is possible to run the program with or without a prompt using 33noprompt or 33sh. This program runs by accepting user input and then parsing that input into a char *array. This array is then parsed for redirection symbols as well as checked for invalid redirection symbols in which case it will print an error. Once the function is parsed the program can now execute the appropriate command. The program makes a call to first check if the command is built in (handle_command) such as the cd or rm commands. Then if that is not the case the function goes to the run_exec which forks the parent process into a child process. Assuming the forking works correctly then the program will go to the execute command function which will check the types of redirection and do the appropriate command. If it was a different command then it just runs the execv. If the forking didn't work then a error will occur and a error will also occur in the event that the execv doesn't run properly. Also the forking on the program is set up so that the program waits for the child process to end before going back to the parent process. 
+
+Bugs:
+
+the prompt occasionally prints out more than once on a line (no functionality error just aesthetic)
